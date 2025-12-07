@@ -44,7 +44,7 @@ export function Hero() {
     backgroundImage: "",
     backgroundVideo: "",
     backgroundOpacity: 0.1,
-    projectButton: "프로젝트 보기",
+    projectButton: "내 프로젝트",
     background: {"image":"","video":"","color":"","opacity":0.1}
   }
 
