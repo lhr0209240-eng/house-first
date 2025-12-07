@@ -52,7 +52,7 @@ export function Contact() {
     bottomSubMessage: "도시의 복잡한 문제 속에서 가장 합리적인 해답을 제안하는 기획자가 되겠습니다.",
     qrContent: ["name","phone","email","location","website"],
     profileEmoji: "👤",
-    background: {"image":"","video":"","color":"","opacity":0.1}
+    background: {"image":"","video":"","color":"#23367d","opacity":0.1}
   }
   
   // 소셜 링크 기본값 (배열 형태로 변경)

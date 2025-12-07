@@ -33,19 +33,19 @@ export function Hero() {
   const { getData, saveData, isEditMode, saveToFile, saveFieldToFile } = useInlineEditor()
   
   // 초기 데이터 - 배열 형태로 변경
-  const defaultSocialLinks = [{"name":"Instagram","icon":"instagram","url":"https://instagram.com/username"}]
+  const defaultSocialLinks = [{"name":"Instagram","icon":"instagram","url":"https://www.instagram.com/l_h.ram/"}]
   
   const defaultInfo = {
-    greeting: "안녕하세요, ",
+    greeting: "단국대학교 도시계획부동산학부 ",
     name: "이하람",
-    title: "단국대학교 도시계획부동산학부 32213641",
-    description: "현장과 데이터, 그리고 사람을 연결하며 도시를 이해하려 노력하는 기획자입니다.",
-    profileImage: "/uploads/hero-profile-1761477237286.png",
+    title: "글로벌 소통 능력을 길러 현장과 데이터, 그리고 사람을 연결하며 도시를 이해하려 노력하는 기획자입니다.",
+    description: "부동산 시장과 도시관리 체계를 함께 이해하며, 지속 가능한 도시 운영에 기여할 수 있는 역량을 쌓아가고 있습니다.",
+    profileImage: "/uploads/hero-profile-1765105476650.png",
     backgroundImage: "",
     backgroundVideo: "",
     backgroundOpacity: 0.1,
     projectButton: "내 프로젝트",
-    background: {"image":"","video":"","color":"","opacity":0.1}
+    background: {"image":"","video":"","color":"#23397b","opacity":0.1}
   }
 
   const [backgroundData, setBackgroundData] = useState<{ image: string; video: string; color: string; opacity: number } | null>(null)
