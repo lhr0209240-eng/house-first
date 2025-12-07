@@ -301,60 +301,98 @@ export function About() {
             )}
           </div>
 
-          {/* 핵심 역량 */}
-          {(aboutInfo.skills.length > 0 || isEditMode) && (
-            <div className="mb-16">
-              <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
-                핵심 역량
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {aboutInfo.skills.map((skill, index) => {
-                  const Icon = SKILL_ICONS[skill.icon as keyof typeof SKILL_ICONS] || Trophy
-                  return (
-                    <div key={index} className="text-center relative">
-                      {isEditMode && (
-                        <button
-                          onClick={() => removeSkill(index)}
-                          className={COMMON_STYLES.deleteButton}
-                        >
-                          <X className={COMMON_STYLES.deleteIcon} />
-                        </button>
-                      )}
-                      <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Icon className="h-8 w-8 text-primary" />
-                      </div>
-                      <h4 className="font-semibold text-foreground mb-2">
-                        <EditableText
-                          value={skill.title}
-                          onChange={(value) => updateSkill(index, 'title', value)}
-                          storageKey={`about-skill-${index}-title`}
-                        />
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        <EditableText
-                          value={skill.description}
-                          onChange={(value) => updateSkill(index, 'description', value)}
-                          storageKey={`about-skill-${index}-description`}
-                          multiline
-                        />
-                      </p>
-                    </div>
-                  )
-                })}
-                {isEditMode && (
-                  <div 
-                    className="text-center border-2 border-dashed border-muted-foreground/30 rounded-lg p-6 flex items-center justify-center cursor-pointer hover:border-primary transition-all"
-                    onClick={() => setShowSkillModal(true)}
-                  >
-                    <div>
-                      <Settings className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                      <p className="text-sm text-muted-foreground">스킬 편집</p>
-                    </div>
-                  </div>
-                )}
+         {/* 핵심 역량 */}
+{(aboutInfo.skills.length > 0 || isEditMode) && (
+  <div className="mb-16">
+    <h3 className="text-2xl font-bold text-foreground mb-8 text-center">
+      핵심 역량
+    </h3>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {aboutInfo.skills.map((skill, index) => {
+        const Icon = SKILL_ICONS[skill.icon as keyof typeof SKILL_ICONS] || Trophy
+
+        return (
+          <div key={index} className="text-center relative">
+
+            {/* 삭제 버튼 */}
+            {isEditMode && (
+              <button
+                onClick={() => removeSkill(index)}
+                className={COMMON_STYLES.deleteButton}
+              >
+                <X className={COMMON_STYLES.deleteIcon} />
+              </button>
+            )}
+
+            {/* 아이콘 */}
+            <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
+              <Icon className="h-8 w-8 text-primary" />
+            </div>
+
+            {/* 제목 */}
+            <h4 className="font-semibold text-foreground mb-2">
+              <EditableText
+                value={skill.title}
+                onChange={(value) => updateSkill(index, 'title', value)}
+                storageKey={`about-skill-${index}-title`}
+              />
+            </h4>
+
+            {/* 설명 */}
+            <p className="text-sm text-muted-foreground mb-2">
+              <EditableText
+                value={skill.description}
+                onChange={(value) => updateSkill(index, 'description', value)}
+                storageKey={`about-skill-${index}-description`}
+                multiline
+              />
+            </p>
+
+            {/* ⭐ 퍼센트 막대 + 숫자 표시 */}
+            <div className="w-full mx-auto mt-3 text-center">
+
+              {/* 숫자 */}
+              <div className="text-xs font-semibold mb-1" style={{ color: "#0A1A4A" }}>
+                {index === 0 ? "85%" : index === 1 ? "80%" : "90%"}
+              </div>
+
+              {/* 막대 */}
+              <div className="w-32 bg-gray-300 h-2 rounded-full mx-auto">
+                <div
+                  className="h-2 rounded-full transition-all duration-500"
+                  style={{
+                    width:
+                      index === 0 ? "85%" :
+                      index === 1 ? "80%" :
+                      "90%",
+                    backgroundColor: "#0A1A4A"
+                  }}
+                ></div>
               </div>
             </div>
-          )}
+
+          </div>
+        )
+      })}
+
+      {/* 편집 버튼 */}
+      {isEditMode && (
+        <div 
+          className="text-center border-2 border-dashed border-muted-foreground/30 rounded-lg p-6 flex items-center justify-center cursor-pointer hover:border-primary transition-all"
+          onClick={() => setShowSkillModal(true)}
+        >
+          <div>
+            <Settings className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+            <p className="text-sm text-muted-foreground">스킬 편집</p>
+          </div>
+        </div>
+      )}
+
+    </div>
+  </div>
+)}
+
 
           {/* 자기소개 상세 */}
           {(aboutInfo.story.length > 0 || isEditMode) && (
