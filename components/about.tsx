@@ -215,7 +215,7 @@ export function About() {
         saveData('about-info', updatedAboutInfo)
       }}
       storageKey="about-background"
-      className="py-20 bg-muted/30 relative"
+      className="py-20 relative"
     >
       <section id="about" className="w-full">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
